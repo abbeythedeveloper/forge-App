@@ -1,0 +1,70 @@
+.page { display: flex; flex-direction: column; gap: 24px; }
+
+/* Header */
+.header { display: flex; justify-content: space-between; align-items: flex-start; }
+.dateLabel { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ember); margin-bottom: 6px; }
+.title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px, 4vw, 48px); letter-spacing: 0.04em; color: var(--text-primary); font-weight: 400; line-height: 1; transition: color 0.3s; }
+.scorePill { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid; padding: 6px 14px; margin-top: 4px; white-space: nowrap; transition: color 0.3s, border-color 0.3s; }
+
+/* Snapshot */
+.snapshot { background: var(--bg-secondary); border: 0.5px solid var(--border); padding: 16px; transition: background 0.3s; }
+.snapshotLabel { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 10px; transition: color 0.3s; }
+.snapshotGrid { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+.snapshotDot { width: 14px; height: 14px; border-radius: 3px; background: var(--border-hover); transition: background 0.2s; }
+.snapshotDotDone { background: var(--teal); }
+.snapshotCount { font-size: 12px; color: var(--text-secondary); transition: color 0.3s; }
+
+/* Loading */
+.loading { padding: 20px; background: var(--bg-secondary); border: 0.5px solid var(--border); }
+.loadingText { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-secondary); }
+
+/* Section label */
+.sectionLabel { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ember); margin-bottom: 8px; }
+
+/* Reflection */
+.reflectionSection { display: flex; flex-direction: column; gap: 10px; }
+.reflectionHint { font-size: 13px; color: var(--text-secondary); line-height: 1.6; transition: color 0.3s; }
+.reflectionInput { width: 100%; background: var(--bg-secondary); border: 1px solid var(--border-hover); color: var(--text-primary); font-family: 'DM Sans', sans-serif; font-size: 14px; padding: 14px 16px; outline: none; resize: none; line-height: 1.7; border-radius: 0; transition: border-color 0.2s, background 0.3s, color 0.3s; }
+.reflectionInput::placeholder { color: var(--text-secondary); }
+.reflectionInput:focus { border-color: var(--ember); }
+.error { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ember); letter-spacing: 0.05em; }
+
+/* Debrief button */
+.debriefBtn { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; background: var(--ember); color: var(--bg-primary); border: none; padding: 16px; cursor: pointer; transition: background 0.2s, opacity 0.2s; width: 100%; }
+.debriefBtn:hover:not(:disabled) { background: var(--text-primary); }
+.debriefBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Loading dots animation */
+.loadingDots { display: inline-flex; align-items: baseline; gap: 1px; }
+.dot1, .dot2, .dot3 { animation: blink 1.2s infinite; font-size: 18px; }
+.dot2 { animation-delay: 0.2s; }
+.dot3 { animation-delay: 0.4s; }
+@keyframes blink { 0%, 80%, 100% { opacity: 0; } 40% { opacity: 1; } }
+
+/* Response */
+.responseSection { display: flex; flex-direction: column; gap: 12px; }
+.coachHeader { display: flex; align-items: center; gap: 8px; }
+.coachIcon { color: var(--ember); font-size: 16px; }
+.coachLabel { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ember); flex: 1; }
+.coachTime { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-secondary); transition: color 0.3s; }
+
+.coachBubble { background: var(--bg-secondary); border: 0.5px solid var(--border); border-left: 3px solid var(--ember); padding: 20px; transition: background 0.3s; }
+.coachResponse { font-size: 15px; color: var(--text-primary); line-height: 1.8; transition: color 0.3s; }
+
+.userBubble { background: var(--bg-tertiary); border: 0.5px solid var(--border); padding: 16px; transition: background 0.3s; }
+.userLabel { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 6px; transition: color 0.3s; }
+.userReflection { font-size: 13px; color: var(--text-secondary); line-height: 1.7; font-style: italic; transition: color 0.3s; }
+
+.redoBtn { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); background: none; border: 1px solid var(--border); padding: 8px 16px; cursor: pointer; align-self: flex-start; transition: all 0.2s; }
+.redoBtn:hover { color: var(--text-primary); border-color: var(--text-primary); }
+
+/* Pro gate */
+.gate { background: var(--bg-secondary); border: 0.5px solid var(--border); padding: 40px; display: flex; flex-direction: column; gap: 16px; transition: background 0.3s; }
+.gateLabel { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ember); }
+.gateTitle { font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 0.04em; color: var(--text-primary); font-weight: 400; line-height: 1; transition: color 0.3s; }
+.gateSub { font-size: 14px; color: var(--text-secondary); line-height: 1.7; max-width: 480px; transition: color 0.3s; }
+.gateFeatures { display: flex; flex-direction: column; gap: 10px; margin: 8px 0; }
+.gateFeature { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-primary); transition: color 0.3s; }
+.gateCheck { color: var(--ember); font-size: 14px; flex-shrink: 0; }
+.upgradeBtn { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; background: var(--ember); color: var(--bg-primary); border: none; padding: 16px 28px; cursor: pointer; transition: background 0.2s; align-self: flex-start; margin-top: 8px; }
+.upgradeBtn:hover { background: var(--text-primary); }

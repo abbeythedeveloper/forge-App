@@ -106,6 +106,8 @@
   font-family: 'DM Sans', sans-serif;
   font-size: 15px;
   outline: none;
+  -webkit-appearance: none;
+  appearance: none;
   transition: border-color 0.2s, background 0.3s, color 0.3s;
   border-radius: 0;
 }

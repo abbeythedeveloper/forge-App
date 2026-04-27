@@ -141,7 +141,7 @@ const Onboarding = () => {
       <div className={styles.bg} />
       <div className={styles.grid} />
       <div className={styles.card}>
-        <div className={styles.logo}>F<span>O</span>RGE</div>
+        <div className={styles.logo}>SM<span>E</span>LTR</div>
         <div className={styles.progressRow}>
           {[0, 1, 2].map(i => (
             <div key={i} className={`${styles.progressDot} ${i <= current ? styles.progressActive : ''}`} />

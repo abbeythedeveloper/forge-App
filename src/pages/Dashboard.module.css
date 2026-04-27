@@ -1,0 +1,256 @@
+.page { display: flex; flex-direction: column; gap: 28px; }
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.dateLabel {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 6px;
+}
+
+.greeting {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(32px, 4vw, 48px);
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  font-weight: 400;
+  line-height: 1;
+  transition: color 0.3s;
+}
+
+.dayBadge {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ember);
+  border: 1px solid var(--ember);
+  padding: 6px 14px;
+  white-space: nowrap;
+  margin-top: 4px;
+}
+
+/* Stats */
+.statsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.statCard {
+  background: var(--bg-secondary);
+  border: 0.5px solid var(--border);
+  padding: 20px;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.statNum {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  transition: color 0.3s;
+}
+
+.statNum span { font-size: 22px; color: var(--text-secondary); }
+
+.statNumLarge {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--text-primary);
+  transition: color 0.3s;
+}
+
+.statLabel {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  transition: color 0.3s;
+}
+
+.statSub {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  transition: color 0.3s;
+}
+
+/* Section labels */
+.sectionLabel {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  transition: color 0.3s;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.seeAll {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--ember);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.seeAll:hover { opacity: 0.7; }
+
+/* Battle */
+.battleRow { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.battleCard {
+  background: var(--bg-secondary);
+  border: 0.5px solid var(--border);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background 0.3s;
+}
+
+.battleIcon {
+  width: 30px; height: 30px;
+  border-radius: 4px;
+  border: 1px solid var(--ember);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; font-weight: 500;
+  color: var(--ember);
+  flex-shrink: 0;
+}
+
+.battleName { font-size: 13px; font-weight: 500; color: var(--text-primary); transition: color 0.3s; }
+.battleStreak { font-size: 11px; color: var(--text-secondary); margin-top: 2px; transition: color 0.3s; }
+
+.battlePill {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  padding: 3px 10px; border-radius: 100px;
+  margin-left: auto;
+}
+
+.battleGreen { background: #E1F5EE; color: #085041; }
+.battleRed { background: #FAECE7; color: #712B13; }
+
+/* Habit list */
+.habitList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.habitRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-secondary);
+  border: 0.5px solid var(--border);
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.3s;
+}
+
+.habitRow:hover { border-color: var(--border-hover); }
+
+.habitCheck {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-hover);
+  flex-shrink: 0;
+}
+
+.habitName { font-size: 13px; font-weight: 500; color: var(--text-primary); transition: color 0.3s; }
+.habitTag { font-size: 11px; color: var(--text-secondary); margin-top: 2px; transition: color 0.3s; }
+
+.habitGroup {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-left: auto;
+}
+
+/* Loading / done states */
+.loadingBox { padding: 20px; background: var(--bg-secondary); border: 0.5px solid var(--border); }
+.loadingText { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-secondary); }
+
+.allDoneBox {
+  padding: 24px;
+  background: var(--teal-bg);
+  border: 1px solid var(--teal);
+  text-align: center;
+}
+
+.allDoneTitle {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.04em;
+  color: var(--teal);
+}
+
+.allDoneSub { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+
+/* Coach card */
+.coachCard {
+  background: var(--bg-secondary);
+  border: 0.5px solid var(--border);
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.3s;
+}
+
+.coachCard:hover { border-color: var(--ember); }
+
+.coachLabel {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 4px;
+}
+
+.coachText { font-size: 14px; color: var(--text-secondary); transition: color 0.3s; }
+
+.coachArrow {
+  font-size: 20px;
+  color: var(--ember);
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .statsRow { grid-template-columns: 1fr 1fr; }
+  .statsRow > :first-child { grid-column: 1 / -1; }
+  .battleRow { grid-template-columns: 1fr; }
+}

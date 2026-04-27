@@ -1,0 +1,98 @@
+.trading {
+  padding: 120px 40px;
+}
+
+.inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 20px;
+}
+
+.headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 4vw, 56px);
+  letter-spacing: 0.04em;
+  line-height: 1.05;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  font-weight: 400;
+  transition: color 0.3s;
+}
+
+.desc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  transition: color 0.3s;
+}
+
+.desc strong {
+  color: var(--bone);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  padding: 28px;
+  transition: background 0.3s;
+}
+
+.cardLabel {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 16px;
+}
+
+.insight {
+  background: var(--teal-bg);
+  border-left: 2px solid var(--teal);
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  transition: background 0.3s;
+}
+
+.insight:last-child {
+  margin-bottom: 0;
+}
+
+.insight p {
+  font-size: 13px;
+  color: var(--bone);
+  line-height: 1.6;
+  transition: color 0.3s;
+}
+
+.insight span {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--teal);
+  display: block;
+  margin-top: 6px;
+}
+
+@media (max-width: 768px) {
+  .trading {
+    padding: 80px 20px;
+  }
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

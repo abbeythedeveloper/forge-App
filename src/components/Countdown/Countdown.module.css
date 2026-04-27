@@ -1,0 +1,123 @@
+.section {
+  padding: 100px 40px;
+  background: var(--bg-secondary);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 1;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.block {
+  width: 110px;
+  height: 110px;
+  background: var(--bg-primary);
+  border: 1px solid var(--ember);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(216, 90, 48, 0.15), inset 0 0 20px rgba(216, 90, 48, 0.04);
+  transition: background 0.3s;
+}
+
+.block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ember), transparent);
+  animation: scanLine 3s linear infinite;
+}
+
+.noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  color: var(--ember);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.unitLabel {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.sub {
+  margin-top: 48px;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s;
+}
+
+@keyframes scanLine {
+  0% { top: -1px; opacity: 1; }
+  100% { top: 101%; opacity: 0.3; }
+}
+
+@media (max-width: 768px) {
+  .section { padding: 80px 20px; }
+  .block { width: 76px; height: 76px; }
+  .num { font-size: 38px; }
+  .timer { gap: 10px; }
+}

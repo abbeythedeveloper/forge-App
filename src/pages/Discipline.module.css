@@ -1,0 +1,55 @@
+.page { display: flex; flex-direction: column; gap: 24px; }
+.header { display: flex; justify-content: space-between; align-items: flex-start; }
+.dateLabel { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ember); margin-bottom: 6px; }
+.title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px, 4vw, 48px); letter-spacing: 0.04em; color: var(--text-primary); font-weight: 400; line-height: 1; transition: color 0.3s; }
+.logBtn { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; background: var(--ember); color: var(--bg-primary); border: none; padding: 10px 20px; cursor: pointer; transition: background 0.2s; margin-top: 4px; white-space: nowrap; }
+.logBtn:hover { background: var(--text-primary); }
+.statsRow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.statCard { background: var(--bg-secondary); border: 0.5px solid var(--border); padding: 16px; transition: background 0.3s; }
+.statNum { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.04em; color: var(--text-primary); line-height: 1; transition: color 0.3s; }
+.statLabel { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); margin-top: 4px; transition: color 0.3s; }
+.form { overflow: hidden; }
+.formInner { background: var(--bg-secondary); border: 0.5px solid var(--border); padding: 24px; display: flex; flex-direction: column; gap: 20px; transition: background 0.3s; }
+.formLabel { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ember); }
+.fieldGroup { display: flex; flex-direction: column; gap: 8px; }
+.fieldLabel { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); transition: color 0.3s; }
+.input { width: 100%; background: var(--bg-tertiary); border: 1px solid var(--border-hover); color: var(--text-primary); font-family: 'DM Sans', sans-serif; font-size: 14px; padding: 11px 14px; outline: none; transition: border-color 0.2s, background 0.3s, color 0.3s; border-radius: 0; }
+.input::placeholder { color: var(--text-secondary); }
+.input:focus { border-color: var(--ember); }
+.textarea { width: 100%; resize: none; background: var(--bg-tertiary); border: 1px solid var(--border-hover); color: var(--text-primary); font-family: 'DM Sans', sans-serif; font-size: 14px; padding: 11px 14px; outline: none; line-height: 1.6; border-radius: 0; transition: border-color 0.2s, background 0.3s, color 0.3s; }
+.textarea::placeholder { color: var(--text-secondary); }
+.textarea:focus { border-color: var(--ember); }
+.suggestions { display: flex; flex-wrap: wrap; gap: 6px; }
+.suggestionBtn { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; background: var(--bg-tertiary); border: 1px solid var(--border-hover); color: var(--text-secondary); padding: 4px 12px; cursor: pointer; transition: all 0.15s; }
+.suggestionBtn:hover { border-color: var(--ember); color: var(--ember); }
+.typeRow { display: flex; gap: 8px; flex-wrap: wrap; }
+.typeBtn { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em; background: var(--bg-tertiary); border: 1px solid var(--border-hover); color: var(--text-secondary); padding: 8px 14px; cursor: pointer; transition: all 0.15s; }
+.typeBtn:hover { border-color: var(--ember); color: var(--ember); }
+.typeBtnActive { background: var(--ember-bg) !important; border-color: var(--ember) !important; color: var(--ember) !important; }
+.outcomeRow { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.outcomeBtn { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.08em; background: var(--bg-tertiary); border: 1px solid var(--border-hover); color: var(--text-secondary); padding: 12px; cursor: pointer; transition: all 0.15s; }
+.outcomeBtnGreen { background: var(--teal-bg) !important; border-color: var(--teal) !important; color: var(--teal) !important; }
+.outcomeBtnRed { background: var(--ember-bg) !important; border-color: var(--ember) !important; color: var(--ember) !important; }
+.submitBtn { font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; background: var(--ember); color: var(--bg-primary); border: none; padding: 14px; cursor: pointer; transition: background 0.2s, opacity 0.2s; align-self: flex-end; min-width: 160px; }
+.submitBtn:hover:not(:disabled) { background: var(--text-primary); }
+.submitBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+.sectionLabel { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 10px; transition: color 0.3s; }
+.loading { padding: 20px; background: var(--bg-secondary); border: 0.5px solid var(--border); }
+.loadingText { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-secondary); }
+.emptyState { background: var(--bg-secondary); border: 0.5px solid var(--border); padding: 32px; text-align: center; transition: background 0.3s; }
+.emptyTitle { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.04em; color: var(--text-secondary); }
+.emptySub { font-size: 13px; color: var(--text-secondary); margin-top: 6px; line-height: 1.6; transition: color 0.3s; }
+.entryList { display: flex; flex-direction: column; gap: 8px; }
+.entryCard { background: var(--bg-secondary); border: 0.5px solid var(--border); padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; transition: background 0.3s; }
+.entryTop { display: flex; justify-content: space-between; align-items: center; }
+.typePill { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; }
+.type_lust { background: #FAECE7; color: #712B13; }
+.type_impulse { background: #FAEEDA; color: #633806; }
+.type_anger { background: #EEEDFE; color: #3C3489; }
+.entryTime { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-secondary); transition: color 0.3s; }
+.entryTrigger { font-size: 13px; color: var(--text-primary); transition: color 0.3s; }
+.entryTriggerLabel { font-weight: 500; color: var(--text-secondary); margin-right: 4px; }
+.entryNotes { font-size: 12px; color: var(--text-secondary); font-style: italic; line-height: 1.5; transition: color 0.3s; }
+.outcomeTag { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; align-self: flex-start; padding: 3px 10px; border-radius: 100px; }
+.outcomeTagGreen { background: #E1F5EE; color: #085041; }
+.outcomeTagRed { background: #FAECE7; color: #712B13; }

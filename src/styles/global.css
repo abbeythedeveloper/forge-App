@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
+
+:root[data-theme='dark'] {
+  --bg-primary: #0A0A08;
+  --bg-secondary: #141410;
+  --bg-tertiary: #1E1E18;
+  --text-primary: #F1EFE8;
+  --text-secondary: #888780;
+  --text-muted: #444441;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
+  --ember: #D85A30;
+  --ember-dim: #993C1D;
+  --ember-bg: rgba(216, 90, 48, 0.08);
+  --teal: #1D9E75;
+  --teal-bg: rgba(29, 158, 117, 0.08);
+  --gold: #BA7517;
+  --bone: #D3D1C7;
+  --grid-line: rgba(255, 255, 255, 0.02);
+  --manifesto-dim: #1E1E18;
+  --manifesto-dim-stroke: #444441;
+  --card-bg: #141410;
+  --card-hover: #1E1E18;
+  --toggle-bg: #1E1E18;
+  --toggle-border: rgba(255,255,255,0.1);
+  --nav-shadow: linear-gradient(to bottom, #0A0A08, transparent);
+}
+
+:root[data-theme='light'] {
+  --bg-primary: #F5F3EC;
+  --bg-secondary: #EDEAE0;
+  --bg-tertiary: #E5E2D6;
+  --text-primary: #1A1A16;
+  --text-secondary: #6B6A64;
+  --text-muted: #B4B2A9;
+  --border: rgba(0, 0, 0, 0.07);
+  --border-hover: rgba(0, 0, 0, 0.14);
+  --ember: #C04A22;
+  --ember-dim: #8A3318;
+  --ember-bg: rgba(192, 74, 34, 0.06);
+  --teal: #0F6E56;
+  --teal-bg: rgba(15, 110, 86, 0.06);
+  --gold: #8A5A0A;
+  --bone: #3A3830;
+  --grid-line: rgba(0, 0, 0, 0.03);
+  --manifesto-dim: #E5E2D6;
+  --manifesto-dim-stroke: #B4B2A9;
+  --card-bg: #EDEAE0;
+  --card-hover: #E5E2D6;
+  --toggle-bg: #EDEAE0;
+  --toggle-border: rgba(0,0,0,0.1);
+  --nav-shadow: linear-gradient(to bottom, #F5F3EC, transparent);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: crosshair;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: crosshair;
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--ember);
+  color: var(--bg-primary);
+}

@@ -1,0 +1,45 @@
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: var(--nav-shadow);
+}
+
+.logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.12em;
+  color: var(--text-primary);
+  transition: color 0.3s;
+}
+
+.logo span {
+  color: var(--ember);
+}
+
+.cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ember);
+  border: 1px solid var(--ember);
+  padding: 8px 20px;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+
+.cta:hover {
+  background: var(--ember);
+  color: var(--bg-primary);
+}
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 16px 20px;
+  }
+}

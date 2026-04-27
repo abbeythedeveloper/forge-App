@@ -1,0 +1,40 @@
+.manifesto {
+  padding: 120px 40px;
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 40px;
+}
+
+.text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(32px, 5vw, 58px);
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  color: var(--text-primary);
+  transition: color 0.3s;
+}
+
+.dim {
+  color: var(--manifesto-dim);
+  -webkit-text-stroke: 1px var(--manifesto-dim-stroke);
+  transition: color 0.3s, -webkit-text-stroke 0.3s;
+}
+
+.ember {
+  color: var(--ember);
+}
+
+@media (max-width: 768px) {
+  .manifesto {
+    padding: 80px 20px;
+  }
+}

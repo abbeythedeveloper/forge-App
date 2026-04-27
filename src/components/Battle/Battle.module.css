@@ -1,0 +1,83 @@
+.battle {
+  padding: 120px 40px;
+  background: var(--bg-secondary);
+  transition: background 0.3s;
+}
+
+.inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 24px;
+}
+
+.headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 6vw, 72px);
+  letter-spacing: 0.04em;
+  line-height: 1.05;
+  margin-bottom: 48px;
+  color: var(--text-primary);
+  font-weight: 400;
+  transition: color 0.3s;
+}
+
+.list {
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border: 1px solid var(--ember);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ember);
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.itemTitle {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  font-weight: 400;
+  transition: color 0.3s;
+}
+
+.itemDesc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  transition: color 0.3s;
+}
+
+@media (max-width: 768px) {
+  .battle {
+    padding: 80px 20px;
+  }
+}

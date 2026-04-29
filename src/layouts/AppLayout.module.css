@@ -175,10 +175,11 @@
 .mobileNav { display: flex; gap: 4px; }
 
 .mobileNavItem {
-  width: 36px; height: 36px;
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
   display: flex; align-items: center; justify-content: center;
   border-radius: 8px;
-  font-size: 14px;
   color: var(--text-secondary);
   text-decoration: none;
   transition: all 0.15s;

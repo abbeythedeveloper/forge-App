@@ -77,7 +77,7 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
           SM<span>E</span>LTR
         </div>
         <div className={styles.mobileNav}>
-          {NAV.slice(0, 4).map(item => (
+          {NAV.map(item => (
             <NavLink
               key={item.to}
               to={item.to}

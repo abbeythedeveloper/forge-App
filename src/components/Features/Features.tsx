@@ -20,7 +20,7 @@ const features = [
     num: '03',
     title: 'AI daily debrief',
     desc: 'Every night, an AI coach reads your habit data and reflection — then talks back. Directly. No generic tips. It remembers your patterns and calls them out.',
-    tag: 'powered by Claude',
+    tag: 'powered by Anthropic',
   },
   {
     num: '04',

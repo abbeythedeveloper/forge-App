@@ -177,7 +177,7 @@ const Upgrade = () => {
               {region.isAfrica ? (
                 <>
                   <span className={styles.priceNum}>
-                    {billing === 'monthly' ? '₦7,000' : '₦60,000'}
+                    {billing === 'monthly' ? '₦9,000' : '₦84,999'}
                   </span>
                   <span className={styles.pricePer}>
                     /{billing === 'monthly' ? 'month' : 'year'}
@@ -196,14 +196,14 @@ const Upgrade = () => {
             </div>
             {billing === 'yearly' && (
               <p className={styles.yearlyNote}>
-                {region.isAfrica ? 'Save ₦24,000 vs monthly' : 'Save $24 vs monthly'}
+                {region.isAfrica ? 'Save ₦29,000 vs monthly' : 'Save $24 vs monthly'}
               </p>
             )}
           </div>
 
           <ul className={styles.featureList}>
             {[
-              'AI daily debrief — powered by Claude',
+              'AI daily debrief — powered by Anthropic',
               'Trade journal + pattern alerts',
               'Unlimited habit history',
               'Habit score graph — up to 90 days',

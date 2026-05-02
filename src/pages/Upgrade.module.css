@@ -1,0 +1,47 @@
+.page { display: flex; flex-direction: column; gap: 24px; max-width: 520px; }
+.header { }
+.label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ember); margin-bottom: 12px; }
+.title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 6vw, 64px); letter-spacing: 0.04em; color: var(--text-primary); font-weight: 400; line-height: 1; margin-bottom: 12px; transition: color 0.3s; }
+.sub { font-size: 15px; color: var(--text-secondary); line-height: 1.7; transition: color 0.3s; }
+
+/* Region */
+.regionBadge { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-secondary); background: var(--bg-secondary); border: 0.5px solid var(--border); padding: 10px 14px; transition: background 0.3s, color 0.3s; }
+.regionBadge strong { color: var(--text-primary); }
+.regionLoading { opacity: 0.6; }
+
+/* Billing toggle */
+.billingToggle { display: flex; gap: 0; border: 1px solid var(--border-hover); width: fit-content; }
+.billingBtn { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; border: none; color: var(--text-secondary); padding: 10px 20px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; gap: 8px; }
+.billingBtn:hover { color: var(--text-primary); }
+.billingActive { background: var(--ember) !important; color: var(--bg-primary) !important; }
+.saveBadge { font-size: 9px; background: var(--teal); color: white; padding: 2px 6px; border-radius: 100px; }
+
+/* Price card */
+.priceCard { background: var(--bg-secondary); border: 1px solid var(--ember); padding: 28px; display: flex; flex-direction: column; gap: 20px; transition: background 0.3s; }
+.priceTop { }
+.planName { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ember); margin-bottom: 8px; }
+.priceDisplay { display: flex; align-items: baseline; gap: 4px; }
+.priceNum { font-family: 'Bebas Neue', sans-serif; font-size: 56px; letter-spacing: 0.02em; color: var(--text-primary); line-height: 1; transition: color 0.3s; }
+.pricePer { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--text-secondary); transition: color 0.3s; }
+.yearlyNote { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--teal); margin-top: 4px; }
+
+/* Features */
+.featureList { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.featureItem { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-secondary); line-height: 1.5; transition: color 0.3s; }
+.featureIcon { color: var(--ember); font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+
+.error { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ember); letter-spacing: 0.05em; }
+
+.btnPrimary { width: 100%; font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; background: var(--ember); color: var(--bg-primary); border: none; padding: 16px; cursor: pointer; transition: background 0.2s, opacity 0.2s; }
+.btnPrimary:hover:not(:disabled) { background: var(--text-primary); }
+.btnPrimary:disabled { opacity: 0.6; cursor: not-allowed; }
+.guarantee { font-size: 12px; color: var(--text-secondary); text-align: center; transition: color 0.3s; }
+
+/* Already pro */
+.alreadyPro { display: flex; flex-direction: column; gap: 12px; }
+
+/* Success state */
+.successState { display: flex; flex-direction: column; gap: 16px; }
+.spinner { width: 32px; height: 32px; border: 2px solid var(--border-hover); border-top-color: var(--ember); border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinnerNote { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-secondary); letter-spacing: 0.1em; }

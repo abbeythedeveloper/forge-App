@@ -23,6 +23,10 @@ import Coach from './pages/Coach'
 import Trades from './pages/Trades'
 import Profile from './pages/Profile'
 import Pricing from './pages/Pricing'
+import Upgrade from './pages/Upgrade'
+
+// ⚠️ DEV ONLY — remove before launch
+import DevPanel from './components/DevPanel/DevPanel'
 
 import './styles/global.css'
 
@@ -56,15 +60,18 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/onboarding" element={<Onboarding />} />
+            <Route path="/pricing" element={<Pricing />} />
             <Route path="/dashboard"  element={<Protected><Dashboard /></Protected>} />
             <Route path="/habits"     element={<Protected><Habits /></Protected>} />
             <Route path="/discipline" element={<Protected><Discipline /></Protected>} />
             <Route path="/coach"      element={<Protected><Coach /></Protected>} />
             <Route path="/trades"     element={<Protected><Trades /></Protected>} />
             <Route path="/profile"    element={<Protected><Profile /></Protected>} />
-            <Route path="/pricing"    element={<Pricing />} />
+            <Route path="/upgrade"    element={<Protected><Upgrade /></Protected>} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
+          {/* ⚠️ DEV ONLY — remove this line before launch */}
+          <DevPanel />
         </AuthProvider>
       </ThemeProvider>
     </BrowserRouter>

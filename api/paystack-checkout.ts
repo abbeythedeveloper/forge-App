@@ -6,17 +6,30 @@ export default async function handler(req: Request) {
   }
 
   try {
-    // Edge runtime reads env vars via process.env on Vercel
     // @ts-ignore
     const secretKey = process.env.PAYSTACK_SECRET_KEY
+    // @ts-ignore
+    const monthlyPlan = process.env.PAYSTACK_MONTHLY_PLAN_CODE
+    // @ts-ignore
+    const yearlyPlan = process.env.PAYSTACK_YEARLY_PLAN_CODE
+
     if (!secretKey) {
       return new Response(
-        JSON.stringify({ error: 'Paystack secret key not configured' }),
+        JSON.stringify({ error: 'Paystack not configured — missing secret key' }),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       )
     }
 
-    const { planCode, email, userId } = await req.json()
+    const { billing, email, userId } = await req.json()
+    const planCode = billing === 'yearly' ? yearlyPlan : monthlyPlan
+
+    if (!planCode) {
+      return new Response(
+        JSON.stringify({ error: `Plan code not configured for billing: ${billing}` }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      )
+    }
+
     const origin = new URL(req.url).origin
 
     const response = await fetch('https://api.paystack.co/transaction/initialize', {
@@ -37,7 +50,7 @@ export default async function handler(req: Request) {
 
     if (!response.ok) {
       return new Response(
-        JSON.stringify({ error: data?.message || 'Paystack error' }),
+        JSON.stringify({ error: data?.message || 'Paystack error', detail: data }),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       )
     }

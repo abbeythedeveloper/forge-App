@@ -55,9 +55,7 @@ const Upgrade = () => {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            planCode: billing === 'monthly'
-              ? (import.meta as any).env.VITE_PAYSTACK_MONTHLY_PLAN_CODE
-              : (import.meta as any).env.VITE_PAYSTACK_YEARLY_PLAN_CODE,
+            billing,
             email: profile.email,
             userId: user.uid,
           }),
@@ -71,9 +69,7 @@ const Upgrade = () => {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            productId: billing === 'monthly'
-              ? (import.meta as any).env.VITE_POLAR_MONTHLY_PRODUCT_ID
-              : (import.meta as any).env.VITE_POLAR_YEARLY_PRODUCT_ID,
+            billing,
             email: profile.email,
             userId: user.uid,
           }),
@@ -177,7 +173,7 @@ const Upgrade = () => {
               {region.isAfrica ? (
                 <>
                   <span className={styles.priceNum}>
-                    {billing === 'monthly' ? '₦9,000' : '₦84,999'}
+                    {billing === 'monthly' ? '₦7,000' : '₦60,000'}
                   </span>
                   <span className={styles.pricePer}>
                     /{billing === 'monthly' ? 'month' : 'year'}
@@ -196,14 +192,14 @@ const Upgrade = () => {
             </div>
             {billing === 'yearly' && (
               <p className={styles.yearlyNote}>
-                {region.isAfrica ? 'Save ₦29,000 vs monthly' : 'Save $24 vs monthly'}
+                {region.isAfrica ? 'Save ₦24,000 vs monthly' : 'Save $24 vs monthly'}
               </p>
             )}
           </div>
 
           <ul className={styles.featureList}>
             {[
-              'AI daily debrief — powered by Anthropic',
+              'AI daily debrief — powered by Claude',
               'Trade journal + pattern alerts',
               'Unlimited habit history',
               'Habit score graph — up to 90 days',

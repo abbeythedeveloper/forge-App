@@ -8,14 +8,28 @@ export default async function handler(req: Request) {
   try {
     // @ts-ignore
     const accessToken = process.env.POLAR_ACCESS_TOKEN
+    // @ts-ignore
+    const monthlyProduct = process.env.POLAR_MONTHLY_PRODUCT_ID
+    // @ts-ignore
+    const yearlyProduct = process.env.POLAR_YEARLY_PRODUCT_ID
+
     if (!accessToken) {
       return new Response(
-        JSON.stringify({ error: 'Polar access token not configured' }),
+        JSON.stringify({ error: 'Polar not configured — missing access token' }),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       )
     }
 
-    const { productId, email, userId } = await req.json()
+    const { billing, email, userId } = await req.json()
+    const productId = billing === 'yearly' ? yearlyProduct : monthlyProduct
+
+    if (!productId) {
+      return new Response(
+        JSON.stringify({ error: `Product ID not configured for billing: ${billing}` }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      )
+    }
+
     const origin = new URL(req.url).origin
 
     const response = await fetch('https://api.polar.sh/v1/checkouts/', {
@@ -37,7 +51,7 @@ export default async function handler(req: Request) {
 
     if (!response.ok) {
       return new Response(
-        JSON.stringify({ error: data?.detail || 'Polar error' }),
+        JSON.stringify({ error: data?.detail || 'Polar error', detail: data }),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       )
     }

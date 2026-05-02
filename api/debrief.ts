@@ -16,6 +16,7 @@ export default async function handler(req: Request) {
     return new Response('Method not allowed', { status: 405 })
   }
 
+  // @ts-ignore
   const apiKey = process.env.ANTHROPIC_API_KEY
 
   // Mock mode — no API key or placeholder

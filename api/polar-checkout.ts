@@ -1,16 +1,18 @@
 export const config = { runtime: 'edge' }
 
-declare const POLAR_ACCESS_TOKEN: string
-
 export default async function handler(req: Request) {
   if (req.method !== 'POST') {
     return new Response('Method not allowed', { status: 405 })
   }
 
   try {
-    const accessToken = typeof POLAR_ACCESS_TOKEN !== 'undefined' ? POLAR_ACCESS_TOKEN : ''
+    // @ts-ignore
+    const accessToken = process.env.POLAR_ACCESS_TOKEN
     if (!accessToken) {
-      return new Response(JSON.stringify({ error: 'Polar not configured' }), { status: 500 })
+      return new Response(
+        JSON.stringify({ error: 'Polar access token not configured' }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      )
     }
 
     const { productId, email, userId } = await req.json()
@@ -31,16 +33,23 @@ export default async function handler(req: Request) {
       }),
     })
 
+    const data = await response.json()
+
     if (!response.ok) {
-      const err = await response.text()
-      return new Response(JSON.stringify({ error: err }), { status: 500 })
+      return new Response(
+        JSON.stringify({ error: data?.detail || 'Polar error' }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      )
     }
 
-    const data = await response.json()
-    return new Response(JSON.stringify({ url: data.url }), {
-      headers: { 'Content-Type': 'application/json' },
-    })
-  } catch {
-    return new Response(JSON.stringify({ error: 'Server error' }), { status: 500 })
+    return new Response(
+      JSON.stringify({ url: data.url }),
+      { headers: { 'Content-Type': 'application/json' } }
+    )
+  } catch (err: any) {
+    return new Response(
+      JSON.stringify({ error: err?.message || 'Server error' }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    )
   }
 }

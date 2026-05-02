@@ -229,7 +229,7 @@ const Upgrade = () => {
           </motion.button>
 
           <p className={styles.guarantee}>
-            Cancel anytime from your profile. No questions asked.
+            Cancel anytime from your profile. No questions asked...
           </p>
         </motion.div>
 

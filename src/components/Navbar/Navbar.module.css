@@ -20,6 +20,19 @@
 .logo span {
   color: var(--ember);
 }
+.pricingLink {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.pricingLink:hover {
+  color: var(--text-primary);
+}
 
 .cta {
   font-family: 'DM Mono', monospace;

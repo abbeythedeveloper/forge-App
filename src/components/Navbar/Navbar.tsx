@@ -12,9 +12,14 @@ const Navbar = () => {
       <div className={styles.logo}>
        SM<span>E</span>LTR
       </div>
-      <a href="#waitlist" className={styles.cta}>
-        Early access
-      </a>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+  <a href="/pricing" className={styles.pricingLink}>
+    Pricing
+  </a>
+  <a href="#waitlist" className={styles.cta}>
+    Early access
+  </a>
+</div>
     </motion.nav>
   )
 }

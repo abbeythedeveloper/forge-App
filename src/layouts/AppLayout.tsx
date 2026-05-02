@@ -11,8 +11,8 @@ const NAV = [
   { to: '/coach',     label: 'AI Coach',   icon: '◈' },
   { to: '/trades',    label: 'Trades',     icon: '◎' },
   { to: '/profile',   label: 'Profile',    icon: '○' },
+  { to: '/pricing',   label: 'Pricing',    icon: '$' },
 ]
-
 const AppLayout = ({ children }: { children: React.ReactNode }) => {
   const { profile, logout } = useAuth()
   const { theme, toggleTheme } = useTheme()

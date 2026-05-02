@@ -1,0 +1,71 @@
+.page { display: flex; flex-direction: column; gap: 48px; max-width: 860px; margin: 0 auto; padding: 40px 40px 80px; }
+
+/* Header */
+.header { text-align: center; }
+.label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ember); margin-bottom: 16px; }
+.title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 8vw, 80px); letter-spacing: 0.04em; color: var(--text-primary); font-weight: 400; line-height: 1.0; margin-bottom: 16px; transition: color 0.3s; }
+.sub { font-size: 15px; color: var(--text-secondary); line-height: 1.7; max-width: 440px; margin: 0 auto; transition: color 0.3s; }
+
+/* Cards */
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.card { background: var(--bg-secondary); border: 0.5px solid var(--border); padding: 28px; display: flex; flex-direction: column; gap: 0; position: relative; transition: background 0.3s, border-color 0.3s; }
+.cardPro { border-color: var(--ember); background: var(--ember-bg); }
+
+.proTag { position: absolute; top: -1px; right: 24px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--ember); color: var(--bg-primary); padding: 4px 12px; }
+
+.cardTop { margin-bottom: 24px; }
+.cardLabel { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 12px; transition: color 0.3s; }
+
+.price { display: flex; align-items: baseline; gap: 4px; margin-bottom: 4px; }
+.priceNum { font-family: 'Bebas Neue', sans-serif; font-size: 56px; letter-spacing: 0.02em; color: var(--text-primary); line-height: 1; transition: color 0.3s; }
+.pricePer { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--text-secondary); transition: color 0.3s; }
+
+.priceDesc { font-size: 12px; color: var(--text-secondary); transition: color 0.3s; }
+.annualNote { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--teal); margin-top: 6px; }
+.nairaNote { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-secondary); margin-top: 4px; transition: color 0.3s; }
+
+/* Features */
+.featureList { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; margin-bottom: 28px; }
+.featureItem { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-secondary); line-height: 1.5; transition: color 0.3s; }
+.featureIcon { color: var(--text-secondary); font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+.featureIconPro { color: var(--ember); font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+
+/* Buttons */
+.cardBottom { margin-top: auto; }
+.btnPrimary { width: 100%; font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; background: var(--ember); color: var(--bg-primary); border: none; padding: 14px; cursor: pointer; transition: background 0.2s; }
+.btnPrimary:hover { background: var(--text-primary); }
+.btnSecondary { width: 100%; font-family: 'DM Mono', monospace; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--text-primary); border: 1px solid var(--border-hover); padding: 14px; cursor: pointer; transition: all 0.2s; }
+.btnSecondary:hover { border-color: var(--text-primary); }
+.currentPlan { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); border: 1px solid var(--border); padding: 10px 14px; text-align: center; transition: color 0.3s, border-color 0.3s; }
+
+/* Comparison table */
+.tableSection { }
+.tableLabel { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 14px; transition: color 0.3s; }
+.table { border: 0.5px solid var(--border); overflow: hidden; }
+.tableHeader { display: grid; grid-template-columns: 1fr 120px 120px; background: var(--bg-secondary); border-bottom: 1px solid var(--border); transition: background 0.3s; }
+.tableRow { display: grid; grid-template-columns: 1fr 120px 120px; border-bottom: 0.5px solid var(--border); transition: background 0.15s; }
+.tableRow:last-child { border-bottom: none; }
+.tableRow:nth-child(even) { background: var(--bg-secondary); }
+.tableFeatureCol { padding: 12px 16px; font-size: 13px; color: var(--text-secondary); display: flex; align-items: center; transition: color 0.3s; }
+.tableCol { padding: 12px 16px; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-secondary); border-left: 0.5px solid var(--border); transition: color 0.3s; }
+.tableColPro { background: var(--ember-bg); }
+.checkYes { color: var(--teal); font-size: 14px; font-weight: 500; }
+.checkNo { color: var(--text-secondary); opacity: 0.4; }
+.checkText { font-size: 11px; text-align: center; }
+
+/* FAQ */
+.faq { display: flex; flex-direction: column; gap: 0; border: 0.5px solid var(--border); }
+.faqItem { padding: 18px 20px; border-bottom: 0.5px solid var(--border); }
+.faqItem:last-child { border-bottom: none; }
+.faqQ { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 6px; transition: color 0.3s; }
+.faqA { font-size: 13px; color: var(--text-secondary); line-height: 1.6; transition: color 0.3s; }
+
+@media (max-width: 640px) {
+  .page { padding: 24px 20px 60px; gap: 36px; }
+  .cards { grid-template-columns: 1fr; }
+  .tableHeader { grid-template-columns: 1fr 90px 90px; }
+  .tableRow { grid-template-columns: 1fr 90px 90px; }
+  .tableFeatureCol { font-size: 12px; padding: 10px 12px; }
+  .tableCol { padding: 10px 8px; font-size: 11px; }
+}

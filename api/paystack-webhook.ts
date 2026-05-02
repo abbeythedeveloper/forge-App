@@ -1,74 +1,64 @@
-export const config = { runtime: 'edge' }
-
-import { initializeApp, getApps, cert } from 'firebase-admin/app'
-import { getFirestore } from 'firebase-admin/firestore'
+import type { VercelRequest, VercelResponse } from '@vercel/node'
+import * as crypto from 'crypto'
+import * as admin from 'firebase-admin'
 
 function getAdminDb() {
-  if (!getApps().length) {
-    initializeApp({
-      credential: cert({
+  if (!admin.apps.length) {
+    admin.initializeApp({
+      credential: admin.credential.cert({
         projectId: process.env.FIREBASE_PROJECT_ID,
         clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
         privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
       }),
     })
   }
-  return getFirestore()
+  return admin.firestore()
 }
 
-export default async function handler(req: Request) {
-  if (req.method !== 'POST') {
-    return new Response('Method not allowed', { status: 405 })
-  }
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  if (req.method !== 'POST') return res.status(405).send('Method not allowed')
 
   const secretKey = process.env.PAYSTACK_SECRET_KEY
-  const body = await req.text()
+  const signature = req.headers['x-paystack-signature'] as string
 
   // Verify Paystack signature
-  if (secretKey) {
-    const signature = req.headers.get('x-paystack-signature') || ''
-    const encoder = new TextEncoder()
-    const key = await crypto.subtle.importKey(
-      'raw', encoder.encode(secretKey),
-      { name: 'HMAC', hash: 'SHA-512' }, false, ['sign']
-    )
-    const sig = await crypto.subtle.sign('HMAC', key, encoder.encode(body))
-    const expected = Array.from(new Uint8Array(sig))
-      .map(b => b.toString(16).padStart(2, '0')).join('')
+  if (secretKey && signature) {
+    const body = JSON.stringify(req.body)
+    const expected = crypto
+      .createHmac('sha512', secretKey)
+      .update(body)
+      .digest('hex')
 
     if (signature !== expected) {
-      return new Response('Invalid signature', { status: 401 })
+      return res.status(401).send('Invalid signature')
     }
   }
 
-  const event = JSON.parse(body)
-  await handleEvent(event)
+  try {
+    const event = req.body
+    const type = event.event
+    const uid = event?.data?.metadata?.firebase_uid
 
-  return new Response('OK', { status: 200 })
-}
+    if (!uid) return res.status(200).send('OK')
 
-async function handleEvent(event: any) {
-  const type = event.event
-  const uid = event.data?.metadata?.firebase_uid
+    const db = getAdminDb()
+    const userRef = db.collection('users').doc(uid)
 
-  if (!uid) return
+    if (type === 'subscription.create' || type === 'charge.success') {
+      await userRef.update({
+        plan: 'pro',
+        paystackSubscriptionCode: event.data?.subscription_code || null,
+        paystackCustomerCode: event.data?.customer?.customer_code || null,
+      })
+    }
 
-  const db = getAdminDb()
-  const userRef = db.collection('users').doc(uid)
-
-  // Subscription activated
-  if (type === 'subscription.create' || type === 'charge.success') {
-    await userRef.update({
-      plan: 'pro',
-      paystackSubscriptionCode: event.data?.subscription_code || null,
-      paystackCustomerCode: event.data?.customer?.customer_code || null,
-    })
-  }
-
-  // Subscription disabled or not renewed
-  if (type === 'subscription.disable' || type === 'subscription.expiry_reminder') {
     if (type === 'subscription.disable') {
       await userRef.update({ plan: 'free', paystackSubscriptionCode: null })
     }
+
+    return res.status(200).send('OK')
+  } catch (err) {
+    console.error('Paystack webhook error:', err)
+    return res.status(500).send('Server error')
   }
 }

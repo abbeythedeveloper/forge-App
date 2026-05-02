@@ -1,72 +1,45 @@
-export const config = { runtime: 'edge' }
-
-import { initializeApp, getApps, cert } from 'firebase-admin/app'
-import { getFirestore } from 'firebase-admin/firestore'
+import type { VercelRequest, VercelResponse } from '@vercel/node'
+import * as admin from 'firebase-admin'
 
 function getAdminDb() {
-  if (!getApps().length) {
-    initializeApp({
-      credential: cert({
+  if (!admin.apps.length) {
+    admin.initializeApp({
+      credential: admin.credential.cert({
         projectId: process.env.FIREBASE_PROJECT_ID,
         clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
         privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
       }),
     })
   }
-  return getFirestore()
+  return admin.firestore()
 }
 
-export default async function handler(req: Request) {
-  if (req.method !== 'POST') {
-    return new Response('Method not allowed', { status: 405 })
-  }
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  if (req.method !== 'POST') return res.status(405).send('Method not allowed')
 
-  const webhookSecret = process.env.POLAR_WEBHOOK_SECRET
-  const signature = req.headers.get('webhook-signature') || ''
+  try {
+    const event = req.body
+    const uid = event?.data?.metadata?.firebase_uid
 
-  // Verify signature
-  if (webhookSecret) {
-    const body = await req.text()
-    const encoder = new TextEncoder()
-    const key = await crypto.subtle.importKey(
-      'raw', encoder.encode(webhookSecret),
-      { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']
-    )
-    const sig = await crypto.subtle.sign('HMAC', key, encoder.encode(body))
-    const expected = Array.from(new Uint8Array(sig))
-      .map(b => b.toString(16).padStart(2, '0')).join('')
+    if (!uid) return res.status(200).send('OK')
 
-    if (!signature.includes(expected)) {
-      return new Response('Invalid signature', { status: 401 })
+    const db = getAdminDb()
+    const userRef = db.collection('users').doc(uid)
+    const type = event.type
+
+    if (type === 'subscription.created' || type === 'subscription.updated') {
+      if (event.data?.status === 'active') {
+        await userRef.update({ plan: 'pro', polarSubscriptionId: event.data?.id || null })
+      }
     }
 
-    const event = JSON.parse(body)
-    await handleEvent(event)
-  } else {
-    const event = await req.json()
-    await handleEvent(event)
-  }
-
-  return new Response('OK', { status: 200 })
-}
-
-async function handleEvent(event: any) {
-  const type = event.type
-  const uid = event.data?.metadata?.firebase_uid
-
-  if (!uid) return
-
-  const db = getAdminDb()
-  const userRef = db.collection('users').doc(uid)
-
-  if (type === 'subscription.created' || type === 'subscription.updated') {
-    const status = event.data?.status
-    if (status === 'active') {
-      await userRef.update({ plan: 'pro', polarSubscriptionId: event.data?.id })
+    if (type === 'subscription.revoked') {
+      await userRef.update({ plan: 'free', polarSubscriptionId: null })
     }
-  }
 
-  if (type === 'subscription.revoked') {
-    await userRef.update({ plan: 'free', polarSubscriptionId: null })
+    return res.status(200).send('OK')
+  } catch (err) {
+    console.error('Polar webhook error:', err)
+    return res.status(500).send('Server error')
   }
 }

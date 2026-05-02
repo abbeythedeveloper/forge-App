@@ -173,7 +173,7 @@ const Upgrade = () => {
               {region.isAfrica ? (
                 <>
                   <span className={styles.priceNum}>
-                    {billing === 'monthly' ? '₦7,000' : '₦60,000'}
+                    {billing === 'monthly' ? '₦9,000' : '₦84,999'}
                   </span>
                   <span className={styles.pricePer}>
                     /{billing === 'monthly' ? 'month' : 'year'}

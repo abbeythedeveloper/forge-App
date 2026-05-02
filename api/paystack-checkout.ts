@@ -41,6 +41,8 @@ export default async function handler(req: Request) {
       body: JSON.stringify({
         email,
         plan: planCode,
+        // Amount in kobo — monthly: ₦7,000 = 700000, yearly: ₦60,000 = 6000000
+        amount: billing === 'yearly' ? 8499900 : 900000,
         metadata: { firebase_uid: userId, cancel_action: `${origin}/pricing` },
         callback_url: `${origin}/upgrade?success=true`,
       }),

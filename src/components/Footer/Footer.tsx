@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { useTheme } from '../../context/ThemeContext'
 import styles from './Footer.module.css'
 
@@ -34,9 +35,14 @@ const Footer = () => {
         </button>
       </div>
 
-      <p className={styles.copy}>
-        // Built for those who are serious. © 2026
-      </p>
+      <div className={styles.right}>
+        <div className={styles.legalLinks}>
+          <Link to="/legal/privacy" className={styles.legalLink}>Privacy</Link>
+          <span className={styles.legalDot}>·</span>
+          <Link to="/legal/terms" className={styles.legalLink}>Terms</Link>
+        </div>
+        <p className={styles.copy}>// Built for those who are serious. © 2026</p>
+      </div>
     </footer>
   )
 }

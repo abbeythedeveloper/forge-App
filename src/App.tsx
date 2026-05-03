@@ -24,9 +24,10 @@ import Trades from './pages/Trades'
 import Profile from './pages/Profile'
 import Pricing from './pages/Pricing'
 import Upgrade from './pages/Upgrade'
+import Legal from './pages/Legal'
 
 // ⚠️ DEV ONLY — remove before launch
-// import DevPanel from './components/DevPanel/DevPanel'
+import DevPanel from './components/DevPanel/DevPanel'
 
 import './styles/global.css'
 
@@ -68,10 +69,11 @@ function App() {
             <Route path="/trades"     element={<Protected><Trades /></Protected>} />
             <Route path="/profile"    element={<Protected><Profile /></Protected>} />
             <Route path="/upgrade"    element={<Protected><Upgrade /></Protected>} />
+            <Route path="/legal/:type" element={<Legal />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           {/* ⚠️ DEV ONLY — remove this line before launch */}
-          {/* <DevPanel /> */}
+          <DevPanel />
         </AuthProvider>
       </ThemeProvider>
     </BrowserRouter>

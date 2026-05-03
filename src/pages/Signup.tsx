@@ -11,6 +11,7 @@ const Signup = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirm, setConfirm] = useState('')
+  const [agreed, setAgreed] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -19,6 +20,7 @@ const Signup = () => {
     if (!email || !password || !confirm) return setError('All fields are required.')
     if (password.length < 6) return setError('Password must be at least 6 characters.')
     if (password !== confirm) return setError('Passwords do not match.')
+    if (!agreed) return setError('You must agree to the Terms of Service and Privacy Policy.')
 
     setLoading(true)
     try {
@@ -44,7 +46,7 @@ const Signup = () => {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
         <Link to="/" className={styles.logo}>SM<span>E</span>LTR</Link>
-        <h1 className={styles.title}>START FORGING.</h1>
+        <h1 className={styles.title}>START SMELTING.</h1>
         <p className={styles.sub}>Create your account. No fluff — just results.</p>
 
         <div className={styles.field}>
@@ -81,6 +83,26 @@ const Signup = () => {
             onChange={e => setConfirm(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && handleSubmit()}
           />
+        </div>
+
+        {/* Terms acceptance */}
+        <div className={styles.agreeRow}>
+          <div
+            className={`${styles.checkbox} ${agreed ? styles.checkboxChecked : ''}`}
+            onClick={() => setAgreed(v => !v)}
+          >
+            {agreed && (
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M2 5l2.5 2.5 4-4" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            )}
+          </div>
+          <p className={styles.agreeText}>
+            I agree to the{' '}
+            <Link to="/legal/terms" className={styles.agreeLink} target="_blank">Terms of Service</Link>
+            {' '}and{' '}
+            <Link to="/legal/privacy" className={styles.agreeLink} target="_blank">Privacy Policy</Link>
+          </p>
         </div>
 
         {error && <p className={styles.error}>// {error}</p>}

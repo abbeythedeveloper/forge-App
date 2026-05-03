@@ -27,7 +27,7 @@ import Upgrade from './pages/Upgrade'
 import Legal from './pages/Legal'
 
 // ⚠️ DEV ONLY — remove before launch
-import DevPanel from './components/DevPanel/DevPanel'
+// import DevPanel from './components/DevPanel/DevPanel'
 
 import './styles/global.css'
 
@@ -73,7 +73,7 @@ function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           {/* ⚠️ DEV ONLY — remove this line before launch */}
-          <DevPanel />
+          {/* <DevPanel /> */}
         </AuthProvider>
       </ThemeProvider>
     </BrowserRouter>

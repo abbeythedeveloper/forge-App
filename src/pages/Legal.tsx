@@ -8,9 +8,9 @@ import AppLayout from '../layouts/AppLayout'
 import styles from './Legal.module.css'
 
 const LAST_UPDATED = 'May 3, 2026'
-const CONTACT_EMAIL = 'hello@smeltr.app'
+const CONTACT_EMAIL = 'hello@smeltr.com.ng'
 const COMPANY = 'SMELTR'
-const DOMAIN = 'smeltr.vercel.app'
+const DOMAIN = 'smeltr.com.ng'
 
 const PRIVACY_SECTIONS = [
   {
